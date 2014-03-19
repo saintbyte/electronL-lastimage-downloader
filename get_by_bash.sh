@@ -8,7 +8,7 @@ MIN=`date +%M`
 DATE_PREFIX=`date +%Y/%B/%d`
 DATE_PREFIX2=`date +%y%m%d`
 echo $HOUR
-if [$MIN -ge 30 ];
+if [ $MIN -ge 30 ];
  then
  MIN=30
 else
