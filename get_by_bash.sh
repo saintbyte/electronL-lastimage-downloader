@@ -1,8 +1,10 @@
 #!/bin/bash
 set +ui
 set -x
+cd /root/tmp/electro_git/
 #ftp://electro:electro@ftp.ntsomz.ru/2014/January/28/1030/140128_1030_original_RGB.jpg
 date
+mkdir ./images/
 HOUR=`date +%H`
 MIN=`date +%M`
 DATE_PREFIX=`date +%Y/%B/%d`
@@ -16,5 +18,6 @@ else
 fi
 echo $MIN
 URL="ftp://electro:electro@ftp.ntsomz.ru/${DATE_PREFIX}/${HOUR}${MIN}/${DATE_PREFIX2}_${HOUR}${MIN}_original_RGB.jpg"
-wget $URL
-echo FILENAME:`basename $URL`
+LOCAL_FILENAME=`basename $URL` 
+wget --tries=10 -O ./images/${LOCAL_FILENAME} $URL
+echo FILENAME:${LOCAL_FILENAME}
